@@ -29,8 +29,8 @@ public class NewsContentFragment extends Fragment {
 
         visibilityLayout.setVisibility(View.VISIBLE);
 
-        TextView newsTitleTextView = (TextView) mView.findViewById(R.id.news_title);
-        TextView newsContentTextView = (TextView) mView.findViewById(R.id.news_content);
+        TextView newsTitleTextView = mView.findViewById(R.id.news_title);
+        TextView newsContentTextView = mView.findViewById(R.id.news_content);
 
         newsTitleTextView.setText(newsTitle);
         newsContentTextView.setText(newsContent);

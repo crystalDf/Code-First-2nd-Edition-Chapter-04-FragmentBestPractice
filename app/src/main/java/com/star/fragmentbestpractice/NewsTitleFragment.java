@@ -24,7 +24,7 @@ public class NewsTitleFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_news_title, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.news_title_recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.news_title_recycler_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
@@ -85,21 +85,18 @@ public class NewsTitleFragment extends Fragment {
 
             final ViewHolder viewHolder = new ViewHolder(view);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            view.setOnClickListener(v -> {
 
-                    News news = mNewsList.get(viewHolder.getAdapterPosition());
+                News news = mNewsList.get(viewHolder.getAdapterPosition());
 
-                    if (getActivity().findViewById(R.id.news_content_layout) != null) {
-                        NewsContentFragment newsContentFragment = (NewsContentFragment)
-                                getFragmentManager().findFragmentById(R.id.news_content_fragment);
+                if (getActivity().findViewById(R.id.news_content_layout) != null) {
+                    NewsContentFragment newsContentFragment = (NewsContentFragment)
+                            getFragmentManager().findFragmentById(R.id.news_content_fragment);
 
-                        newsContentFragment.refresh(news.getTitle(), news.getContent());
-                    } else {
-                        NewsContentActivity.actionStart(getActivity(), news.getTitle(),
-                                news.getContent());
-                    }
+                    newsContentFragment.refresh(news.getTitle(), news.getContent());
+                } else {
+                    NewsContentActivity.actionStart(getActivity(), news.getTitle(),
+                            news.getContent());
                 }
             });
 
@@ -125,7 +122,7 @@ public class NewsTitleFragment extends Fragment {
             public ViewHolder(View itemView) {
                 super(itemView);
 
-                mNewsTitleTextView = (TextView) itemView.findViewById(R.id.news_title);
+                mNewsTitleTextView = itemView.findViewById(R.id.news_title);
             }
         }
     }
